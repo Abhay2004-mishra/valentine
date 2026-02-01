@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Anime Valentine 💖</title>
 
 <style>
-*{ margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  width:100vw; height:100vh;
-  overflow:hidden;
-  font-family:'Poppins', sans-serif;
+  width:100vw;height:100vh;
   background:black;
+  font-family:Poppins, sans-serif;
+  overflow:hidden;
 }
 
-.container{ position:relative; width:100%; height:100%; }
+.container{position:relative;width:100%;height:100%}
 
 .bg{
-  position:absolute; inset:0;
+  position:absolute;inset:0;
   background:url("animebackground.jpeg") center/cover no-repeat;
-  filter: blur(3px) brightness(0.85);
-  transform: scale(1.05);
+  filter:blur(3px) brightness(0.85);
+  transform:scale(1.05);
 }
 
 .overlay{
-  position:absolute; inset:0;
+  position:absolute;inset:0;
   background:rgba(255,182,193,0.25);
-  backdrop-filter: blur(6px);
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
-  text-align:center; color:#ff4f8b;
+  backdrop-filter:blur(6px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#ff4f8b;
   z-index:1;
 }
 
@@ -41,15 +44,15 @@ h1{
   background:rgba(0,0,0,0.4);
   padding:10px 20px;
   border-radius:12px;
-  animation: floatText 2s ease-in-out infinite;
+  animation:floatText 2s ease-in-out infinite;
 }
 
 @keyframes floatText{
-  0%,100%{transform: translateY(0);}
-  50%{transform: translateY(-10px);}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
-.buttons{ position:relative; width:300px; height:200px; }
+.buttons{position:relative;width:300px;height:200px}
 
 button{
   padding:14px 36px;
@@ -58,56 +61,25 @@ button{
   border:none;
   cursor:pointer;
   position:absolute;
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 #yesBtn{
   background:linear-gradient(135deg,#ff5fa2,#ff8acb);
   color:white;
   left:50%;
-  transform:translateX(-50%);
   bottom:20px;
+  transform:translateX(-50%);
 }
 
 #noBtn{
   background:white;
   color:#ff4f8b;
   left:50%;
-  transform:translateX(-50%);
   top:20px;
-  transition:0.1s;
+  transform:translateX(-50%);
 }
 
-/* THANK YOU SCREEN */
-.thankyou-screen{
-  position:absolute;
-  inset:0;
-  display:none;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,0.75);
-  z-index:3;
-  animation: fadeIn 1s ease forwards;
-}
-
-.thankyou-screen img{
-  width:150px;
-  margin-bottom:20px;
-}
-
-.thankyou-screen h2{
-  color:#ff69b4;
-  font-size:28px;
-  text-shadow:0 0 15px hotpink;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-/* VIDEO SCREEN */
+/* VIDEO */
 .video-screen{
   position:absolute;
   inset:0;
@@ -115,18 +87,16 @@ button{
   display:none;
   justify-content:center;
   align-items:center;
-  opacity:0;
-  transition: opacity 1s ease;
   z-index:2;
 }
 
-.video-screen video{
+video{
   width:100%;
   height:100%;
   object-fit:contain;
 }
 
-/* HEARTS + EFFECTS */
+/* HEARTS */
 .heart{
   position:absolute;
   pointer-events:none;
@@ -134,80 +104,9 @@ button{
   animation:floatCurve 4s linear forwards;
 }
 
-.trail-heart{
-  position:absolute;
-  pointer-events:none;
-  font-size:12px;
-  animation:trailFloat 2s linear forwards;
-  opacity:0.8;
-}
-
-.bg-heart{
-  position:absolute;
-  pointer-events:none;
-  font-size:20px;
-  color:#ff69b4;
-  opacity:0.3;
-  animation:bgFloat linear infinite;
-}
-
-.glow{
-  position:absolute;
-  pointer-events:none;
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background: radial-gradient(circle, #fff, rgba(255,255,255,0));
-  opacity:0.7;
-  animation:glowFloat linear infinite;
-}
-
-@keyframes glowFloat{
-  from{transform:translateY(0); opacity:0.7;}
-  to{transform:translateY(-400px); opacity:0;}
-}
-
 @keyframes floatCurve{
-  0%{transform:translate(0,0) scale(1); opacity:1;}
-  100%{transform:translate(0,-500px) scale(1.5); opacity:0;}
-}
-
-@keyframes trailFloat{
-  from{transform:translateY(0); opacity:0.8;}
-  to{transform:translateY(-150px); opacity:0;}
-}
-
-.sparkle{
-  position:absolute;
-  font-size:14px;
-  color:white;
-  pointer-events:none;
-  animation:sparkleUp 3s linear forwards;
-}
-
-@keyframes sparkleUp{
-  from{transform:translateY(0); opacity:0.8;}
-  to{transform:translateY(-400px); opacity:0;}
-}
-
-.floating-text{
-  position:absolute;
-  font-size:32px;
-  font-weight:bold;
-  color:#ff69b4;
-  text-shadow:0 0 12px hotpink;
-  pointer-events:none;
-  animation:textFloat 3s forwards;
-}
-
-@keyframes textFloat{
-  from{transform:translateY(0); opacity:1;}
-  to{transform:translateY(-200px); opacity:0;}
-}
-
-@keyframes bgFloat{
-  from{transform:translateY(0) rotate(0deg);}
-  to{transform:translateY(-800px) rotate(360deg);}
+  0%{transform:translate(0,0);opacity:1}
+  100%{transform:translate(0,-500px);opacity:0}
 }
 </style>
 </head>
@@ -225,13 +124,11 @@ button{
     </div>
   </div>
 
-  <div class="thankyou-screen" id="thankYou">
-    <img src="flowers.gif" alt="flowers">
-    <h2>Thank you 💐</h2>
-  </div>
-
   <div class="video-screen" id="videoScreen">
-    <video id="valVideo" playsinline>
+    <!-- ❌ NO autoplay -->
+    <!-- ❌ NO muted -->
+    <!-- ✅ Sound allowed only after click -->
+    <video id="valVideo" playsinline controls>
       <source src="cutevideo1.mp4" type="video/mp4">
     </video>
   </div>
@@ -244,86 +141,54 @@ const yesBtn = document.getElementById("yesBtn");
 const overlay = document.getElementById("overlay");
 const videoScreen = document.getElementById("videoScreen");
 const video = document.getElementById("valVideo");
-const thankYou = document.getElementById("thankYou");
 
-let texts = ["NO 🙈","Ehh?! 😳","hahah 😜","Missed!","Impossible 💕","nahi bannana","ja re"];
+let texts = ["NO 🙈","Ehh?! 😳","Missed 😜","Impossible 💕"];
 let i = 0;
 
-// NO button dodges
+/* NO button move */
 function moveNo(){
   const x = Math.random()*300 - 150;
   const y = Math.random()*200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  noBtn.style.transform = `translate(${x}px,${y}px)`;
   noBtn.innerText = texts[i % texts.length];
   i++;
 }
 noBtn.addEventListener("mouseover", moveNo);
 noBtn.addEventListener("touchstart", moveNo);
 
-// Effects
-function createHeart(parent,x=null,y=null){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="💖";
-  h.style.left=(x ?? Math.random()*parent.offsetWidth)+"px";
-  h.style.top=(y ?? parent.offsetHeight)+"px";
+/* HEART */
+function createHeart(parent,x,y){
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💖";
+  h.style.left = x+"px";
+  h.style.top = y+"px";
   parent.appendChild(h);
   setTimeout(()=>h.remove(),4000);
 }
 
-function createSparkle(parent){
-  const s=document.createElement("div");
-  s.className="sparkle";
-  s.innerText="✨";
-  s.style.left=Math.random()*parent.offsetWidth+"px";
-  parent.appendChild(s);
-  setTimeout(()=>s.remove(),3000);
-}
+/* ✅ MOST IMPORTANT PART (AUDIO FIX) */
+yesBtn.addEventListener("click", () => {
 
-function createFloatingText(parent,text){
-  const t=document.createElement("div");
-  t.className="floating-text";
-  t.innerText=text;
-  t.style.left=Math.random()*(parent.offsetWidth-100)+"px";
-  parent.appendChild(t);
-  setTimeout(()=>t.remove(),3000);
-}
+  overlay.style.display = "none";
+  videoScreen.style.display = "flex";
 
-// Background hearts
-for(let j=0;j<25;j++){
-  const bh=document.createElement("div");
-  bh.className="bg-heart";
-  bh.innerText="💖";
-  bh.style.left=Math.random()*window.innerWidth+"px";
-  bh.style.top=Math.random()*window.innerHeight+"px";
-  bh.style.animationDuration=(5+Math.random()*5)+"s";
-  overlay.appendChild(bh);
-}
+  // 🔥 THIS IS REQUIRED FOR VERCEL
+  video.currentTime = 0;
+  video.muted = false;     // ✅ enable sound
+  video.volume = 1.0;
 
-// YES click flow
-yesBtn.addEventListener("click", ()=>{
-  overlay.style.display="none";
-  thankYou.style.display="flex";
+  video.play().catch(err=>{
+    console.log("Tap required for audio", err);
+  });
 
-  setTimeout(()=>{
-    thankYou.style.display="none";
-    videoScreen.style.display="flex";
-    setTimeout(()=>videoScreen.style.opacity=1,50);
-
-    video.play().catch(()=>{});
-
-    setInterval(()=>createHeart(videoScreen),300);
-    setInterval(()=>createSparkle(videoScreen),500);
-    setInterval(()=>createFloatingText(videoScreen,"I knew it 💕"),2000);
-  },2500);
 });
 
-// Interaction
-videoScreen.addEventListener("mousemove",e=>{
-  createHeart(videoScreen,e.clientX,e.clientY);
-});
-videoScreen.addEventListener("click",e=>{
-  for(let i=0;i<5;i++) createHeart(videoScreen,e.clientX,e.clientY);
+/* click hearts */
+videoScreen.addEventListener("click", e=>{
+  for(let i=0;i<5;i++){
+    createHeart(videoScreen,e.clientX,e.clientY);
+  }
 });
 </script>
 
