@@ -1,103 +1,155 @@
-
-*{margin:0;padding:0;box-sizing:border-box}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 body{
-  width:100vw;height:100vh;
+  width:100vw; height:100vh;
+  overflow:hidden; font-family:'Poppins', sans-serif;
   background:black;
-  font-family:Poppins, sans-serif;
-  overflow:hidden;
 }
 
-.container{position:relative;width:100%;height:100%}
+.container{ position:relative; width:100%; height:100%; }
 
 .bg{
-  position:absolute;inset:0;
+  position:absolute; inset:0;
   background:url("animebackground.jpeg") center/cover no-repeat;
-  filter:blur(3px) brightness(0.85);
-  transform:scale(1.05);
+  filter: blur(3px) brightness(0.85);
+  transform: scale(1.05);
 }
 
 .overlay{
-  position:absolute;inset:0;
+  position:absolute; inset:0;
   background:rgba(255,182,193,0.25);
-  backdrop-filter:blur(6px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  color:#ff4f8b;
+  backdrop-filter: blur(6px);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  text-align:center; color:#ff4f8b;
+  overflow:hidden;
   z-index:1;
 }
 
 h1{
-  font-size:28px;
+  font-size:28px; 
   margin-bottom:40px;
-  color:#ff4f8b;
-  background:rgba(0,0,0,0.4);
-  padding:10px 20px;
-  border-radius:12px;
-  animation:floatText 2s ease-in-out infinite;
+  text-shadow:0 0 12px rgba(255,105,180,0.9);
+
+  /* Solid color for readability */
+  color: #ff4f8b;
+
+  /* Background behind text */
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 12px;
+
+  /* Floating animation */
+  animation: floatText 2s ease-in-out infinite;
 }
 
 @keyframes floatText{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
+  0%,100%{transform: translateY(0);}
+  50%{transform: translateY(-10px);}
 }
 
-.buttons{position:relative;width:300px;height:200px}
+.buttons{ position:relative; width:300px; height:200px; }
 
 button{
-  padding:14px 36px;
-  font-size:18px;
-  border-radius:30px;
-  border:none;
-  cursor:pointer;
-  position:absolute;
+  padding:14px 36px; font-size:18px;
+  border-radius:30px; border:none; cursor:pointer;
+  position:absolute; box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 #yesBtn{
   background:linear-gradient(135deg,#ff5fa2,#ff8acb);
-  color:white;
-  left:50%;
+  color:white; left:50%; transform:translateX(-50%);
   bottom:20px;
-  transform:translateX(-50%);
 }
 
 #noBtn{
-  background:white;
-  color:#ff4f8b;
-  left:50%;
-  top:20px;
-  transform:translateX(-50%);
+  background:white; color:#ff4f8b; left:50%;
+  transform:translateX(-50%); top:20px; transition:0.1s;
 }
 
-/* VIDEO */
+/* Video screen */
 .video-screen{
-  position:absolute;
-  inset:0;
-  background:black;
-  display:none;
-  justify-content:center;
-  align-items:center;
+  position:absolute; inset:0; background:black;
+  display:none; justify-content:center; align-items:center;
+  opacity:0; transition: opacity 1s ease; overflow:hidden;
   z-index:2;
 }
 
-video{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+.video-screen video{
+  width:100%; height:100%; object-fit:contain;
 }
 
-/* HEARTS */
+/* Main heart animation */
 .heart{
-  position:absolute;
-  pointer-events:none;
-  font-size:24px;
-  animation:floatCurve 4s linear forwards;
+  position:absolute; pointer-events:none;
+  font-size:24px; animation:floatCurve 4s linear forwards;
 }
 
+/* Mini trailing heart */
+.trail-heart{
+  position:absolute; pointer-events:none;
+  font-size:12px; animation:trailFloat 2s linear forwards;
+  opacity:0.8;
+}
+
+/* Background floating hearts */
+.bg-heart{
+  position:absolute; pointer-events:none;
+  font-size:20px; color:#ff69b4; opacity:0.3;
+  animation:bgFloat linear infinite;
+}
+
+/* Glowing particles over video */
+.glow{
+  position:absolute; pointer-events:none;
+  width:4px; height:4px;
+  border-radius:50%;
+  background: radial-gradient(circle, #fff, rgba(255,255,255,0));
+  opacity:0.7;
+  animation:glowFloat linear infinite;
+}
+
+@keyframes glowFloat{
+  0%{ transform: translate(0,0) scale(1); opacity:0.7; }
+  100%{ transform: translate(0,-400px) scale(1.5); opacity:0; }
+}
+
+/* Curve path */
 @keyframes floatCurve{
-  0%{transform:translate(0,0);opacity:1}
-  100%{transform:translate(0,-500px);opacity:0}
+  0% { transform: translate(0,0) rotate(0deg) scale(1); opacity:1; }
+  25% { transform: translate(30px,-100px) rotate(90deg) scale(1.1); }
+  50% { transform: translate(-20px,-200px) rotate(180deg) scale(1.2); }
+  75% { transform: translate(25px,-300px) rotate(270deg) scale(1.3); }
+  100% { transform: translate(0,-500px) rotate(360deg) scale(1.5); opacity:0; }
+}
+
+/* Trail float for mini hearts */
+@keyframes trailFloat{
+  0% { transform: translate(0,0) scale(1); opacity:0.8; }
+  100% { transform: translate(0,-150px) scale(0.8); opacity:0; }
+}
+
+/* Sparkle animation */
+.sparkle{ position:absolute; font-size:14px; color:#fff;
+  opacity:0.8; pointer-events:none; animation:sparkleUp 3s linear forwards; }
+@keyframes sparkleUp{
+  0% {transform:translate(0,0) scale(0.5); opacity:0.8;}
+  100% {transform:translate(-30px,-400px) scale(1.5); opacity:0;}
+}
+
+/* Floating text */
+.floating-text{
+  position:absolute; font-size:32px; font-weight:bold;
+  color:#ff69b4; text-shadow:0 0 12px rgba(255,105,180,0.9);
+  pointer-events:none; animation:textFloat 3s forwards;
+}
+@keyframes textFloat{
+  0% {transform: translateY(0) scale(1); opacity:1;}
+  100% {transform: translateY(-200px) scale(1.5); opacity:0;}
+}
+
+/* Background float */
+@keyframes bgFloat{
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-800px) rotate(360deg); }
 }
